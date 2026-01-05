@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>New User List - Approve</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #6b7fa8 0%, #5a6f96 100%);
+        min-height: 100vh;
+        padding: 30px 20px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        color: #1a3a52;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+        width: 75px;
+        height: 75px;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 2px solid #1a3a52;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        overflow: hidden;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .title-section h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1a3a52;
+      }
+
+      .title-section p {
+        font-size: 14px;
+        color: #1a3a52;
+        opacity: 0.8;
+      }
+
+      .parachute-img {
+        width: 120px;
+        height: 120px;
+        opacity: 0.9;
+      }
+
+      .heading-box {
+        background: linear-gradient(90deg, #1a3a52 0%, #2d5a8c 100%);
+        color: white;
+        padding: 25px 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 20px auto;
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        max-width: 500px;
+      }
+
+      .table-container {
+        background-color: #1e4d5c;
+        border-radius: 8px;
+        padding: 0;
+        margin: 30px 0;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        color: white;
+      }
+
+      thead {
+        background-color: #1e4d5c;
+      }
+
+      th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: bold;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+      }
+
+      td {
+        padding: 25px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      tbody tr {
+        background-color: #1e4d5c;
+      }
+
+      tbody tr:hover {
+        background-color: rgba(45, 90, 140, 0.5);
+      }
+
+      .checkbox-cell {
+        display: flex;
+        align-items: center;
+      }
+
+      .custom-checkbox {
+        width: 45px;
+        height: 45px;
+        background-color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .custom-checkbox:hover {
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+      }
+
+      .custom-checkbox.checked {
+        background-color: #ffffff;
+        border-color: #4caf50;
+        border-width: 3px;
+      }
+
+      .custom-checkbox.checked::after {
+        content: "✓";
+        color: #4caf50;
+        font-size: 32px;
+        font-weight: bold;
+      }
+
+      .approve-text {
+        color: #4caf50;
+        font-weight: bold;
+        font-size: 15px;
+        display: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .approve-text.show {
+        display: block;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 30px;
+      }
+
+      .dashboard-btn {
+        background: linear-gradient(135deg, #b8d4f0 0%, #a8c4e0 100%);
+        color: #1a3a52;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .dashboard-btn:hover {
+        background: linear-gradient(135deg, #ffffff 0%, #e8f0f8 100%);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .dashboard-btn::before {
+        content: "⬅ ";
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo-section">
+        <div class="logo">
+          <img src="./sign_in/public/logo11298-q5dt-200h.png" alt="Logo" />
+        </div>
+        <div class="title-section">
+          <h1>TROOP TRACK</h1>
+          <p>Soldier's Fitness Tracker</p>
+        </div>
+      </div>
+      <div class="parachute-img">🪂</div>
+    </div>
+
+    <div class="heading-box">NEW USER LIST</div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>SER</th>
+            <th>NO</th>
+            <th>RANK</th>
+            <th>NAME</th>
+            <th>PREVIOUS UNIT</th>
+            <th>APPROVE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="checkbox-cell">
+                <div class="custom-checkbox" data-row="1"></div>
+              </div>
+            </td>
+            <td>1.</td>
+            <td>106234</td>
+            <td>MD. SAKIB HASAN</td>
+            <td>2 SIG BN</td>
+            <td>
+              <span class="approve-text">APPROVED</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox-cell">
+                <div class="custom-checkbox" data-row="2"></div>
+              </div>
+            </td>
+            <td>2.</td>
+            <td>102456</td>
+            <td>CPL</td>
+            <td>RAKIB AHSAN</td>
+            <td>
+              <span class="approve-text">APPROVED</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox-cell">
+                <div class="custom-checkbox" data-row="3"></div>
+              </div>
+            </td>
+            <td>3.</td>
+            <td>103789</td>
+            <td>KARIM HASSAN</td>
+            <td>3 SIG BN</td>
+            <td>
+              <span class="approve-text">APPROVED</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox-cell">
+                <div class="custom-checkbox" data-row="4"></div>
+              </div>
+            </td>
+            <td>4.</td>
+            <td>104567</td>
+            <td>SNK</td>
+            <td>ZAHIR KHAN</td>
+            <td>
+              <span class="approve-text">APPROVED</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <button class="dashboard-btn" onclick="goBackDashboard()">DASHBOARD</button>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('.custom-checkbox');
+
+        checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('click', function() {
+            // Toggle checkbox
+            this.classList.toggle('checked');
+
+            // Find the corresponding row and approve text
+            const row = this.closest('tr');
+            const approveText = row.querySelector('.approve-text');
+
+            // Show or hide approve text based on checkbox state
+            if (this.classList.contains('checked')) {
+              approveText.classList.add('show');
+            } else {
+              approveText.classList.remove('show');
+            }
+          });
+        });
+      });
+    </script>
+    <script src="buttonconnection.js"></script>
+  </body>
+</html>
