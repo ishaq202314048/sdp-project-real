@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>Update Soldier - TROOP TRACK</title>
+    <meta property="og:title" content="Update Soldier" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}pre {  white-space: normal;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: #333;
+        background: linear-gradient(180deg, rgba(200, 230, 201, 0.8) 0%, rgba(100, 150, 120, 0.6) 100%);
+        padding: 20px;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="./index.css" rel="stylesheet" />
+    <style>
+      .update-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        border-bottom: 2px solid #c8e6c9;
+        padding-bottom: 20px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+      }
+
+      .back-button {
+        background: #64967f;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+        background: #4d7362;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        font-weight: 600;
+        color: #2d5016;
+        margin-bottom: 8px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .form-group.read-only input {
+        background: #f5f5f5;
+        cursor: not-allowed;
+        color: #666;
+      }
+
+      .form-group input,
+      .form-group select {
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 16px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:not([readonly]):focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #2d5016;
+        background: #f0f8e8;
+        box-shadow: 0 0 8px rgba(45, 80, 22, 0.2);
+      }
+
+      .form-group input[readonly] {
+        border-color: #d0d0d0;
+        background: #f9f9f9;
+        color: #555;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid #c8e6c9;
+      }
+
+      .btn {
+        padding: 14px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn-save {
+        background: #2d5016;
+        color: white;
+        flex: 1;
+        max-width: 300px;
+      }
+
+      .btn-save:hover {
+        background: #1f3810;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+      }
+
+      .btn-cancel {
+        background: #999;
+        color: white;
+        flex: 1;
+        max-width: 300px;
+      }
+
+      .btn-cancel:hover {
+        background: #777;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .info-box {
+        background: #e8f5e9;
+        border-left: 4px solid #2d5016;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        color: #1b5e20;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="update-container">
+      <div class="header">
+        <h1>Update Soldier Information</h1>
+        <button class="back-button" onclick="goBack()">← Back</button>
+      </div>
+
+      <div class="info-box">
+        ℹ️ Fields with grey background are read-only and cannot be changed. Edit only the fields with white background.
+      </div>
+
+      <form id="updateForm">
+        <!-- Read-Only Fields -->
+        <div class="form-grid">
+          <div class="form-group read-only">
+            <label for="no">NO:</label>
+            <input type="text" id="no" name="no" value="102678" readonly />
+          </div>
+
+          <div class="form-group read-only">
+            <label for="rank">RANK:</label>
+            <input type="text" id="rank" name="rank" value="SWO" readonly />
+          </div>
+
+          <!-- Editable Fields -->
+          <div class="form-group">
+            <label for="name">NAME:</label>
+            <input type="text" id="name" name="name" placeholder="Enter soldier name" />
+          </div>
+
+          <div class="form-group">
+            <label for="height">HEIGHT:</label>
+            <input type="text" id="height" name="height" placeholder="e.g., 5'10''" />
+          </div>
+
+          <div class="form-group">
+            <label for="weight">WEIGHT:</label>
+            <input type="text" id="weight" name="weight" placeholder="e.g., 80 kg" />
+          </div>
+
+          <div class="form-group">
+            <label for="company">COMPANY:</label>
+            <input type="text" id="company" name="company" placeholder="Enter company" />
+          </div>
+
+          <div class="form-group">
+            <label for="dob">DATE OF BIRTH:</label>
+            <input type="date" id="dob" name="dob" />
+          </div>
+
+          <div class="form-group">
+            <label for="bloodGroup">BLOOD GROUP:</label>
+            <select id="bloodGroup" name="bloodGroup">
+              <option value="">Select Blood Group</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ipftResult">IPFT RESULT:</label>
+            <select id="ipftResult" name="ipftResult">
+              <option value="">Select Result</option>
+              <option value="PASS">PASS</option>
+              <option value="FAIL">FAIL</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="category">CATEGORY:</label>
+            <input type="text" id="category" name="category" placeholder="Enter category" />
+          </div>
+
+          <div class="form-group">
+            <label for="medicalCategory">MEDICAL CATEGORY:</label>
+            <input type="text" id="medicalCategory" name="medicalCategory" placeholder="Enter medical category" />
+          </div>
+
+          <div class="form-group">
+            <label for="gender">GENDER:</label>
+            <select id="gender" name="gender">
+              <option value="">Select Gender</option>
+              <option value="MALE">MALE</option>
+              <option value="FEMALE">FEMALE</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="remarks">REMARKS:</label>
+            <input type="text" id="remarks" name="remarks" placeholder="Enter any remarks" />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn btn-save">💾 Save Changes</button>
+          <button type="button" class="btn btn-cancel" onclick="goBack()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+
+      document.getElementById('updateForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get all form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Show success message
+        alert('✅ Soldier information updated successfully!');
+        
+        // Log the updated data (in real app, send to server)
+        console.log('Updated data:', data);
+        
+        // Go back to dashboard
+        window.history.back();
+      });
+
+      // Set current date as default in date field
+      document.getElementById('dob').addEventListener('focus', function() {
+        if (!this.value) {
+          this.value = '1988-04-12'; // Pre-fill with example date
+        }
+      });
+    </script>
+  </body>
+</html>

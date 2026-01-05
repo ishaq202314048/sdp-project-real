@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>exported project</title>
+    <meta property="og:title" content="exported project" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style>
+      .user-options{
+        position: fixed;
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 6px 18px rgba(16,24,40,0.12);
+        padding: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        min-width: 260px;
+        z-index: 10000;
+        box-sizing: border-box;
+        border-radius: 8px;
+      }
+      .user-options[hidden]{
+        display: none;
+      }
+      #choose-user-btn{
+        cursor:pointer;
+        font-size: 20px;
+        padding: 0.6rem 0.75rem;
+        background: transparent;
+        border: none;
+      }
+      .user-option{
+        background: #f8fafc;
+        border: 1px solid rgba(2,6,23,0.04);
+        text-align: left;
+        padding: 0.9rem 1rem;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1.3;
+        border-radius: 6px;
+        width: 100%;
+      }
+      .user-option:hover, .user-option:focus{
+        background: rgba(2,6,23,0.06);
+        outline: none;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="./index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="frame33-container1">
+      <div class="frame33-thq-frame33-elm">
+        <div class="frame33-thq-component5-elm">
+          <div class="frame33-thq-frame44-elm">
+            <div class="frame33-thq-frame35-elm" style="position:relative;">
+              <button id="choose-user-btn" class="frame33-thq-text-elm1" aria-expanded="false" aria-controls="user-options" type="button">Choose User Type</button>
+              <img src="public/frame42i324-ptod.svg" alt="Frame42I324" class="frame33-thq-frame42-elm" />
+              <div id="user-options" class="user-options" role="menu" aria-labelledby="choose-user-btn" hidden>
+                <a href="../admin_dashboard/index.html" style="text-decoration: none;"><button class="user-option" role="menuitem" data-user="adjutant" type="button">Adjutant</button></a>
+                <a href="../clark/index.html" style="text-decoration: none;"><button class="user-option" role="menuitem" data-user="clark" type="button">Clark</button></a>
+                <a href="../troop_dashboard/index.html" style="text-decoration: none;"><button class="user-option" role="menuitem" data-user="troop" type="button">Troop</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame33-thq-group27-elm">
+          <div class="frame33-thq-frame53-elm">
+            <span class="frame33-thq-text-elm2">USER SELECTION</span>
+          </div>
+        </div>
+        <div class="frame33-thq-group1-elm">
+          <img src="public/logo13244-c6zh-200h.png" alt="Logo13244" class="frame33-thq-logo1-elm" />
+          <span class="frame33-thq-text-elm3">
+            <span>TROOP TRACK</span>
+            <br />
+            <span>Soldier's Fitness Tracker</span>
+          </span>
+          <img src="public/line13244-bdas.svg" alt="Line13244" class="frame33-thq-line1-elm" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const btn = document.getElementById('choose-user-btn');
+        const panel = document.getElementById('user-options');
+
+        if (!btn || !panel) return;
+
+        function openPanel(){
+          const rect = btn.getBoundingClientRect();
+          panel.style.left = rect.left + 'px';
+          panel.style.top = (rect.bottom + 8) + 'px';
+          panel.hidden = false;
+          btn.setAttribute('aria-expanded','true');
+        }
+        function closePanel(){
+          panel.hidden = true;
+          btn.setAttribute('aria-expanded','false');
+        }
+
+        btn.addEventListener('click', (e)=>{
+          if (panel.hidden) openPanel(); else closePanel();
+        });
+
+        document.addEventListener('click', (e)=>{
+          if (!panel.contains(e.target) && e.target !== btn) closePanel();
+        });
+
+        btn.addEventListener('keydown', (e)=>{
+          if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openPanel();
+            const first = panel.querySelector('.user-option');
+            if (first) first.focus();
+          }
+          if (e.key === 'Escape') closePanel();
+        });
+
+        panel.addEventListener('keydown', (e)=>{
+          const items = Array.from(panel.querySelectorAll('.user-option'));
+          const current = document.activeElement;
+          const idx = items.indexOf(current);
+
+          if (e.key === 'Escape') { closePanel(); btn.focus(); return; }
+
+          if (e.key === 'ArrowDown'){
+            e.preventDefault();
+            const next = items[(idx + 1) % items.length];
+            if (next) next.focus();
+            return;
+          }
+          if (e.key === 'ArrowUp'){
+            e.preventDefault();
+            const prev = items[(idx - 1 + items.length) % items.length];
+            if (prev) prev.focus();
+            return;
+          }
+          if (e.key === 'Home'){
+            e.preventDefault();
+            if (items[0]) items[0].focus();
+            return;
+          }
+          if (e.key === 'End'){
+            e.preventDefault();
+            if (items[items.length-1]) items[items.length-1].focus();
+            return;
+          }
+          if (e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            if (current && current.classList.contains('user-option')) current.click();
+            return;
+          }
+        });
+
+        panel.querySelectorAll('.user-option').forEach((opt)=>{
+          opt.addEventListener('click', (e)=>{
+            const user = opt.getAttribute('data-user');
+            btn.textContent = opt.textContent;
+            closePanel();
+            
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/category';
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'category';
+            input.value = user;
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

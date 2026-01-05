@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TROOP TRACK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Arial', sans-serif !important;
+            background: linear-gradient(180deg, #6b8f7d 0%, #4a6d5b 100%) !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px !important;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .sign-up-text {
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: left;
+            letter-spacing: 0.5px;
+        }
+
+        .form-wrapper {
+            background: rgba(107, 143, 125, 0.85);
+            border-radius: 12px;
+            padding: 45px 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 45px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text h1 {
+            font-size: 26px;
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header-text p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            opacity: 0.95;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', 'Arial', sans-serif;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2d5016 0%, #1f3810 100%);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .login-link a:hover {
+            opacity: 0.9;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+
+            .header-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sign-up-text {
+                font-size: 28px;
+            }
+
+            .header-text h1 {
+                font-size: 22px;
+            }
+
+            .header-text p {
+                font-size: 13px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sign-up-text">Sign Up</div>
+        
+        <div class="form-wrapper">
+            <div class="header-section">
+                <div class="logo">
+                    <img src="./public/logo12723-v4k9-200h.png" alt="TROOP TRACK Logo">
+                </div>
+                <div class="header-text">
+                    <h1>TROOP TRACK</h1>
+                    <p>Soldier's Fitness Tracker</p>
+                </div>
+            </div>
+
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input 
+                        type="text" 
+                        id="id" 
+                        name="id"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="name">NAME</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="rank">RANK</label>
+                    <input 
+                        type="text" 
+                        id="rank" 
+                        name="rank"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="height">HEIGHT</label>
+                    <input 
+                        type="text" 
+                        id="height" 
+                        name="height"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="company">COMPANY</label>
+                    <input 
+                        type="text" 
+                        id="company" 
+                        name="company"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">DATE OF BIRTH</label>
+                    <input 
+                        type="date" 
+                        id="dob" 
+                        name="dob"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="ipft">IPFT RESULT</label>
+                    <input 
+                        type="text" 
+                        id="ipft" 
+                        name="ipft"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodgroup">BLOOD GROUP</label>
+                    <input 
+                        type="text" 
+                        id="bloodgroup" 
+                        name="bloodgroup"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="injury">INJURY</label>
+                    <input 
+                        type="text" 
+                        id="injury" 
+                        name="injury"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="medical">MEDICAL CATEGORY</label>
+                    <input 
+                        type="text" 
+                        id="medical" 
+                        name="medical"
+                        placeholder=""
+                        required
+                    />
+                </div>
+
+                <button type="submit" class="login-button">REGISTER</button>
+
+                <div class="login-link">
+                    Already have an account? <a href="./index.html">Log In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const form = document.getElementById('signup-form');
+            
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                console.log('New soldier registration:', data);
+                alert('✅ Registration successful! Your account has been created.');
+                
+                // Redirect to login page after 1 second
+                setTimeout(function(){
+                    window.location.href = './index.html';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
